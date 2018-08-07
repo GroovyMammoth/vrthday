@@ -1,5 +1,7 @@
 .jumbotron{
   background: rgba(33, 33, 33, 0.6);
+  margin-top: 20px;
+  height: 240px;
 }
 .image-responsive{
   width: 10%;
@@ -13,4 +15,17 @@
 
 .navbar-brand img {
   max-height: 100%
+}
+
+.bg-black {
+  background-color: #222222;
+}
+
+.nav-item-special {
+  margin-left:10px;
+  margin-right:10px;
+}
+
+.h1{
+   font-size: 4em;
 }
