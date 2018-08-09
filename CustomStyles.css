@@ -29,3 +29,13 @@
 .h1{
    font-size: 4em;
 }
+
+.fa-play-circle-o {
+  margin-top: 60px;
+  color: #6CB8FF;
+}
+
+.card {
+  margin-left: 20px;
+  margin-right: 20px;
+}
