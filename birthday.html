@@ -11,8 +11,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
   <script src="https://cdn.snipcart.com/scripts/2.0/snipcart.js" id="snipcart" data-api-key="ZjlkNWJmYTQtNTY2NC00ZjAzLWJlNDktMmFiNTAzNTFhM2NkNjM2NjkwOTExNTc5ODQ5Njc2"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.1/p5.js"></script>
-  <script type="text/javascript" src="editables/paradise.js"></script>
-  <script type="text/javascript" src="utils/query_parameter_retriever.js"></script>
+  <script type="text/javascript" src="editables/load_texts.js"></script>
   <script>
     var card_orders = 1;
   </script>
@@ -76,13 +75,14 @@
   </div>
 
   <div class="row">
+
     <div class="col-md-4 text-center">
       <div class="card text-white bg-dark mb-3">
-        <img class="card-img-top" src="assets/sunrise.png" alt="Card image cap">
+        <img class="card-img-top" src="assets/museum.png" alt="Card image cap">
         <div class="card-body">
-          <h5 class="card-title">Paradise</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <button onclick="document.getElementById('ww').style.display='block'" class="btn btn-success">
+          <h5 class="card-title">Museum</h5>
+          <p class="card-text">Visit a personalized art gallery with photographs you've taken over the years!</p>
+          <button onclick="document.getElementById('ms').style.display='block'" class="btn btn-success">
             Add to Cart
           </button>
         </div>
@@ -94,8 +94,8 @@
         <img class="card-img-top" src="assets/sasquatch.png" alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title">Mooning Sasquatch</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <button onclick="document.getElementById('ww').style.display='block'" class="btn btn-success">
+          <p class="card-text">Explore an enchanted forest with birthday surprises around every corner!</p>
+          <button onclick="document.getElementById('pd').style.display='block'" class="btn btn-success">
             Add to Cart
           </button>
         </div>
@@ -104,11 +104,11 @@
 
     <div class="col-md-4 text-center">
       <div class="card text-white bg-dark mb-3">
-        <img class="card-img-top" src="assets/winter.png" alt="Card image cap">
+        <img class="card-img-top" src="assets/sunrise.png" alt="Card image cap">
         <div class="card-body">
-          <h5 class="card-title">Winter Wonderland</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <button onclick="document.getElementById('ww').style.display='block'" class="btn btn-success">
+          <h5 class="card-title">Paradise</h5>
+          <p class="card-text">Take your loved one on a magical journey to a tropical island for their birthday!</p>
+          <button onclick="document.getElementById('pd').style.display='block'" class="btn btn-success">
             Add to Cart
           </button>
         </div>
@@ -116,29 +116,61 @@
     </div>
   </div>
 
-  <div id="ww" class="w3-modal w3-animate-zoom">
+  <div id="pd" class="w3-modal w3-animate-zoom">
     <div class="w3-modal-content" style="background-color:black;">
       <header class="w3-header">
         <p align="right">
-          <button class="btn btn-danger ui-btn-right" onclick="document.getElementById('ww').style.display='none'">X</button>
+          <button class="btn btn-danger ui-btn-right" onclick="document.getElementById('pd').style.display='none'">X</button>
         </p>
       </header>
       <div class="w3-container">
         <div class="text-center">
           <form>
-            <p><input type="text" id="to" placeholder="To"/></p>
-            <p><input type="text" id="from" placeholder="From"/></p>
-            <p><input type="email" name="replyto" id="email" placeholder="Recipient's Email"/></p>
+            <p><input type="text" id="to_pd" placeholder="To"/></p>
+            <p><input type="text" id="from_pd" placeholder="From"/></p>
+            <p><input type="email" name="replyto" id="email_pd" placeholder="Recipient's Email"/></p>
           </form>
           <button
             class="snipcart-add-item btn btn-success"
-            onclick="editParadise(document.getElementById('to').value,document.getElementById('from').value,document.getElementById('email').value);document.getElementById('ww').style.display='none';"
+            onclick="editParadise(document.getElementById('to_pd').value,document.getElementById('from_pd').value,document.getElementById('email_pd').value);document.getElementById('pd').style.display='none';"
             data-item-id="3"
-            data-item-name="Winter Wonderland"
+            data-item-name="Paradise"
             data-item-price="5.00"
             data-item-weight="20"
             data-item-url="https://www.vrthday.com/birthday"
-            data-item-description="Winter Wonderland birthday card"
+            data-item-description="Paradise birthday card"
+            style="margin-bottom:10px;">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="ms" class="w3-modal w3-animate-zoom">
+    <div class="w3-modal-content" style="background-color:black;">
+      <header class="w3-header">
+        <p align="right">
+          <button class="btn btn-danger ui-btn-right" onclick="document.getElementById('ms').style.display='none'">X</button>
+        </p>
+      </header>
+      <div class="w3-container">
+        <div class="text-center">
+          <form>
+            <p><input type="text" id="to_ms" placeholder="To"/></p>
+            <p><input type="text" id="from_ms" placeholder="From"/></p>
+            <p><input type="email" name="replyto" id="email_ms" placeholder="Recipient's Email"/></p>
+            <p><button class="btn btn-info">Upload Images</button></p>
+          </form>
+          <button
+            class="snipcart-add-item btn btn-success"
+            onclick="editMuseum(document.getElementById('to_ms').value,document.getElementById('from_ms').value,document.getElementById('email_ms').value);document.getElementById('ms').style.display='none';"
+            data-item-id="1"
+            data-item-name="Museum"
+            data-item-price="5.00"
+            data-item-weight="20"
+            data-item-url="https://www.vrthday.com/birthday"
+            data-item-description="Museum birthday card"
             style="margin-bottom:10px;">
             Add to Cart
           </button>
@@ -165,25 +197,41 @@
 
   <script>
     function editParadise(to,from,email){
-      console.log(to);
-      console.log(from);
-      console.log(email);
       if (to==="" || from==="" || email==="") {
-        alert("'To', 'From', and 'Recipient's Email' fields are required for this card!")
-        location.reload()
+        alert("'To', 'From', and 'Recipient's Email' fields are required for this card!");
       }
       else {
         if (card_orders > 5) {
-          alert("You may place up to 5 cards in one order. Place this order before adding more cards.")
+          alert("You may place up to 5 cards in one order. Place this order before adding more cards.");
         }
         else{
-          TemplateHTML[208] = '    <a-entity text="value: Wishing you a chill birthday, '.concat(to,'!; color:#FFFFFF; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/gloriahallelujah/GloriaHallelujah.json;" position="5 5.9 -13" rotation="0 -10 0" scale="65 75" ></a-entity>');
-          TemplateHTML[209] = '    <a-entity text="value: -Love, '.concat(from,'; color:#FFFFFF; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/gloriahallelujah/GloriaHallelujah.json;" position="33 1.2 -11" rotation="0 -10 0" scale="65 75" ></a-entity>');
-          TemplateHTML[211] = '    <a-entity text="value: Wishing you a chill birthday, '.concat(to, '!; color:#FFFFFF; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/gloriahallelujah/GloriaHallelujah.json;" position="0 0.1 -25" rotation="-90 -10 0" scale="65 75" ></a-entity>');
-          TemplateHTML[212] = '    <a-entity text="value: -Love, '.concat(from,'; color:#FFFFFF; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/gloriahallelujah/GloriaHallelujah.json;" position="30 0.1 -7" rotation="-90 -10 -5" scale="65 75" ></a-entity>');
+          TemplateHTML1[208] = '    <a-entity text="value: Wishing you a chill birthday, '.concat(to,'!; color:#FFFFFF; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/gloriahallelujah/GloriaHallelujah.json;" position="5 5.9 -13" rotation="0 -10 0" scale="65 75" ></a-entity>');
+          TemplateHTML1[209] = '    <a-entity text="value: -Love, '.concat(from,'; color:#FFFFFF; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/gloriahallelujah/GloriaHallelujah.json;" position="33 1.2 -11" rotation="0 -10 0" scale="65 75" ></a-entity>');
+          TemplateHTML1[211] = '    <a-entity text="value: Wishing you a chill birthday, '.concat(to, '!; color:#FFFFFF; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/gloriahallelujah/GloriaHallelujah.json;" position="0 0.1 -25" rotation="-90 -10 0" scale="65 75" ></a-entity>');
+          TemplateHTML1[212] = '    <a-entity text="value: -Love, '.concat(from,'; color:#FFFFFF; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/gloriahallelujah/GloriaHallelujah.json;" position="30 0.1 -7" rotation="-90 -10 -5" scale="65 75" ></a-entity>');
           var StringHTML = "";
-          for (i in TemplateHTML){
-            StringHTML = StringHTML.concat(TemplateHTML[i], "\n");
+          for (i in TemplateHTML1){
+            StringHTML = StringHTML.concat(TemplateHTML1[i], "\n");
+          }
+          document.getElementById('email_'+card_orders.toString()).value = email;
+          document.getElementById('html_file_'+card_orders.toString()).value = StringHTML;
+          card_orders += 1;
+        }
+      }
+    }
+    function editMuseum(to,from,email){
+      if (to==="" || from==="" || email==="") {
+        alert("'To', 'From', and 'Recipient's Email' fields are required for this card!");
+      }
+      else {
+        if (card_orders > 5) {
+          alert("You may place up to 5 cards in one order. Place this order before adding more cards.");
+        }
+        else{
+          TemplateHTML2[252] = '      <h2>To: '.concat(to,'  From: ',from,'</h2>');
+          var StringHTML = "";
+          for (i in TemplateHTML1){
+            StringHTML = StringHTML.concat(TemplateHTML2[i], "\n");
           }
           document.getElementById('email_'+card_orders.toString()).value = email;
           document.getElementById('html_file_'+card_orders.toString()).value = StringHTML;
