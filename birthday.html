@@ -14,6 +14,7 @@
   <script type="text/javascript" src="editables/load_texts.js"></script>
   <script>
     var card_orders = 1;
+    var isValid = true;
   </script>
   <link href="https://cdn.snipcart.com/themes/2.0/base/snipcart.min.css" type="text/css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
@@ -152,7 +153,7 @@
         <div class="card-body">
           <h5 class="card-title">Custom</h5>
           <p class="card-text">You want something you don't see? Let's make something together!</p>
-          <button onclick="document.getElementById('pd').style.display='block'" class="btn btn-info">
+          <button onclick="document.getElementById('pd').style.display='block'" class="btn btn-primary">
             Contact Us
           </button>
         </div>
@@ -243,6 +244,7 @@
     function editParadise(to,from,email){
       if (to==="" || from==="" || email==="") {
         alert("'To', 'From', and 'Recipient's Email' fields are required for this card!");
+        isValid = false;
       }
       else {
         if (card_orders > 5) {
@@ -266,6 +268,7 @@
     function editMuseum(to,from,email){
       if (to==="" || from==="" || email==="") {
         alert("'To', 'From', and 'Recipient's Email' fields are required for this card!");
+        isValid = false;
       }
       else {
         if (card_orders > 5) {
@@ -289,6 +292,12 @@
     Snipcart.subscribe('order.completed', function (data) {
       document.getElementById('cart_form').submit();
       card_orders = 1;
+    });
+    Snipcart.subscribe('item.adding', function (ev, item, items){
+      if (!isValid){
+        ev.preventDefault();
+        isValid = true;
+      }
     });
   </script>
 
