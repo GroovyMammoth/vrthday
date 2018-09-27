@@ -12,8 +12,8 @@
   <script src="https://cdn.snipcart.com/scripts/2.0/snipcart.js" id="snipcart" data-api-key="ZjlkNWJmYTQtNTY2NC00ZjAzLWJlNDktMmFiNTAzNTFhM2NkNjM2NjkwOTExNTc5ODQ5Njc2"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.1/p5.js"></script>
   <script type="text/javascript" src="editables/load_texts.js"></script>
+  <script type="text/javascript" src="generate_project.js"></script>
   <script>
-    var card_orders = 1;
     var isValid = true;
   </script>
   <link href="https://cdn.snipcart.com/themes/2.0/base/snipcart.min.css" type="text/css" rel="stylesheet" />
@@ -153,7 +153,7 @@
         <div class="card-body">
           <h5 class="card-title">Custom</h5>
           <p class="card-text">You want something you don't see? Let's make something together!</p>
-          <button onclick="document.getElementById('pd').style.display='block'" class="btn btn-primary">
+          <button onclick="PostFile('test.html')" class="btn btn-primary">
             Contact Us
           </button>
         </div>
@@ -177,7 +177,8 @@
           </form>
           <button
             class="snipcart-add-item btn btn-success"
-            onclick="editParadise(document.getElementById('to_pd').value,document.getElementById('from_pd').value,document.getElementById('email_pd').value);document.getElementById('pd').style.display='none';"
+            onclick="editParadise(document.getElementById('to_pd').value,document.getElementById('from_pd').value,document.getElementById('email_pd').value);
+              document.getElementById('pd').style.display='none'"
             data-item-id="3"
             data-item-name="Paradise"
             data-item-price="5.00"
@@ -205,7 +206,10 @@
             <p><input type="text" id="to_ms" placeholder="To"/></p>
             <p><input type="text" id="from_ms" placeholder="From"/></p>
             <p><input type="email" name="replyto" id="email_ms" placeholder="Recipient's Email"/></p>
-            <p><button class="btn btn-info">Upload Images</button></p>
+            <label for="file-upload" class="btn btn-info">
+              <i class="fa fa-cloud-upload"></i> Upload Images
+            </label>
+            <input id="file-upload" type="file" accept="image/*"/ multiple>
           </form>
           <button
             class="snipcart-add-item btn btn-success"
@@ -247,22 +251,15 @@
         isValid = false;
       }
       else {
-        if (card_orders > 5) {
-          alert("You may place up to 5 cards in one order. Place this order before adding more cards.");
+        TemplateHTML1[208] = '    <a-entity text="value: Wishing you a chill birthday, '.concat(to,'!; color:#FFFFFF; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/gloriahallelujah/GloriaHallelujah.json;" position="5 5.9 -13" rotation="0 -10 0" scale="65 75" ></a-entity>');
+        TemplateHTML1[209] = '    <a-entity text="value: -Love, '.concat(from,'; color:#FFFFFF; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/gloriahallelujah/GloriaHallelujah.json;" position="33 1.2 -11" rotation="0 -10 0" scale="65 75" ></a-entity>');
+        TemplateHTML1[211] = '    <a-entity text="value: Wishing you a chill birthday, '.concat(to, '!; color:#FFFFFF; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/gloriahallelujah/GloriaHallelujah.json;" position="0 0.1 -25" rotation="-90 -10 0" scale="65 75" ></a-entity>');
+        TemplateHTML1[212] = '    <a-entity text="value: -Love, '.concat(from,'; color:#FFFFFF; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/gloriahallelujah/GloriaHallelujah.json;" position="30 0.1 -7" rotation="-90 -10 -5" scale="65 75" ></a-entity>');
+        var StringHTML = "";
+        for (i in TemplateHTML1){
+          StringHTML = StringHTML.concat(TemplateHTML1[i], "\n");
         }
-        else{
-          TemplateHTML1[208] = '    <a-entity text="value: Wishing you a chill birthday, '.concat(to,'!; color:#FFFFFF; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/gloriahallelujah/GloriaHallelujah.json;" position="5 5.9 -13" rotation="0 -10 0" scale="65 75" ></a-entity>');
-          TemplateHTML1[209] = '    <a-entity text="value: -Love, '.concat(from,'; color:#FFFFFF; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/gloriahallelujah/GloriaHallelujah.json;" position="33 1.2 -11" rotation="0 -10 0" scale="65 75" ></a-entity>');
-          TemplateHTML1[211] = '    <a-entity text="value: Wishing you a chill birthday, '.concat(to, '!; color:#FFFFFF; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/gloriahallelujah/GloriaHallelujah.json;" position="0 0.1 -25" rotation="-90 -10 0" scale="65 75" ></a-entity>');
-          TemplateHTML1[212] = '    <a-entity text="value: -Love, '.concat(from,'; color:#FFFFFF; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/gloriahallelujah/GloriaHallelujah.json;" position="30 0.1 -7" rotation="-90 -10 -5" scale="65 75" ></a-entity>');
-          var StringHTML = "";
-          for (i in TemplateHTML1){
-            StringHTML = StringHTML.concat(TemplateHTML1[i], "\n");
-          }
-          document.getElementById('email_'+card_orders.toString()).value = email;
-          document.getElementById('html_file_'+card_orders.toString()).value = StringHTML;
-          card_orders += 1;
-        }
+        PostFile(StringHTML);
       }
     }
     function editMuseum(to,from,email){
@@ -270,20 +267,13 @@
         alert("'To', 'From', and 'Recipient's Email' fields are required for this card!");
         isValid = false;
       }
-      else {
-        if (card_orders > 5) {
-          alert("You may place up to 5 cards in one order. Place this order before adding more cards.");
+      else{
+        TemplateHTML2[252] = '      <h2>To: '.concat(to,'  From: ',from,'</h2>');
+        var StringHTML = "";
+        for (i in TemplateHTML1){
+          StringHTML = StringHTML.concat(TemplateHTML2[i], "\n");
         }
-        else{
-          TemplateHTML2[252] = '      <h2>To: '.concat(to,'  From: ',from,'</h2>');
-          var StringHTML = "";
-          for (i in TemplateHTML1){
-            StringHTML = StringHTML.concat(TemplateHTML2[i], "\n");
-          }
-          document.getElementById('email_'+card_orders.toString()).value = email;
-          document.getElementById('html_file_'+card_orders.toString()).value = StringHTML;
-          card_orders += 1;
-        }
+        PostFile(StringHTML);
       }
     }
   </script>
