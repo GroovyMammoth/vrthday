@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>Vrthday</title>
+
+  <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="about:blank">
+
+  <!--Scripts for general use, all credit to their authors-->
+  <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+  <script src="https://unpkg.com/aframe-animation-component@3.2.1/dist/aframe-animation-component.min.js"></script>
+  <script src="https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js"></script>
+  <script src="https://unpkg.com/aframe-extras.ocean@%5E3.5.x/dist/aframe-extras.ocean.min.js"></script>
+  <script src="https://unpkg.com/aframe-gradient-sky@1.0.4/dist/gradientsky.min.js"></script>
+  <script src="https://unpkg.com/aframe-extras.tube@%5E3.5.x/dist/aframe-extras.tube.min.js"></script>
+  <script src="https://rawgit.com/ngokevin/aframe-event-set-component/master/dist/aframe-event-set-component.min.js"></script>
+  <script src="howler.min.js"></script>
+  <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v3.8.6/dist/aframe-extras.min.js"></script>
+  <script src="https://rawgit.com/casonclagg/aframe-mario-star-component/master/dist/aframe-mario-star-component.min.js"></script>
+  <script src="https://rawgit.com/mayognaise/aframe-video-shader/master/dist/aframe-vid-shader.min.js"></script>
+  <script src="https://rawgit.com/ngokevin/kframe/master/components/mountain/dist/aframe-mountain-component.min.js"></script>
+  <script src="https://rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script>
+  <script src="https://samsunginternet.github.io/a-frame-components/dist/ocean-plane.js"></script>
+  <script src="https://cdn.rawgit.com/donmccurdy/aframe-physics-system/v1.0.3/dist/aframe-physics-system.min.js"></script>
+  <script src="https://samsunginternet.github.io/a-frame-components/dist/fire-item.js"></script>
+  <script src="https://unpkg.com/aframe-sun-sky-component@^3.0.0/dist/aframe-sun-sky-component.min.js"></script>
+
+  <!--Play audio-->
+  <script>
+    var sound = new Howl({
+      src: [''],
+      loop: true });
+    sound.play();
+  </script>
+
+  <!--Style the splash screen-->
+  <style type="text/css">
+  #splash {
+
+      position:absolute;
+      height:100vh;
+      width:100vw;
+      overflow:hidden;
+      color: white;
+      background : rgba(99,159,255,0.9);
+      top:0;
+      left:0;
+      text-align: center;
+      font-family: Arial;
+      font-size: 16px;
+
+
+  }
+  #vr {
+      display:inline-block;
+      border : 4px solid white;
+      border-radius : 2rem;
+      padding : 2rem;
+      margin-top: 1rem;
+      cursor: pointer;
+  }
+  </style>
+
+</head>
+<body>
+  <a-scene  id="scene" visible="true" particle-system="preset: snow; color: #24CAFF; particleCount: 5000">
+
+  <a-assets>
+    <!--Poly created by Google, all credit to author-->
+    <a-asset-item id="balloon1" src="https://cdn.glitch.com/27b72f3c-7030-442d-9bcc-d0b49ad6f074%2FBalloon.obj?1533879123298"></a-asset-item>
+    <a-asset-item id="balloon2" src="https://cdn.glitch.com/27b72f3c-7030-442d-9bcc-d0b49ad6f074%2FBalloon.mtl?1533879261961"></a-asset-item>
+
+  </a-assets>
+
+  <!--balloons-->
+   <a-entity>
+  <a-obj-model obj-model="obj: #balloon1; mtl: #balloon2" rotation="0 0 0" scale="10 10 10" position="0 -20 -15" src="https://cdn.glitch.com/35e6ea74-7b63-42b2-92c5-5a94a86a80b5%2Fnomac.png?1501085406786"
+               animation="property: color; dur: 1000; loop: true; to: #5F5"
+                animation__yoyo="property: position; dur: 20000; loop: true; to: 0 50 -15">
+     <a-animation attribute="rotation"
+               dur="2000"
+               fill="forwards"
+               to="0 360 0"
+               repeat="indefinite"></a-animation>
+
+  </a-obj-model>
+
+  <a-obj-model obj-model="obj: #balloon1; mtl: #balloon2" rotation="0 0 0" scale="10 10 10" position="5 -20 -13" src="https://cdn.glitch.com/35e6ea74-7b63-42b2-92c5-5a94a86a80b5%2Fnomac.png?1501085406786"
+               animation="property: color; dur: 1000; loop: true; to: #5F5"
+                animation__yoyo="property: position; dur: 29500; loop: true; to: 5 50 -13">
+     <a-animation attribute="rotation"
+               dur="3000"
+               fill="forwards"
+               to="0 360 0"
+               repeat="indefinite"></a-animation>
+
+  </a-obj-model>
+
+<!--       <a-obj-model obj-model="obj: #balloon1; mtl: #balloon2" rotation="0 0 0" scale="10 10 10" position="12 -20 -11" src="https://cdn.glitch.com/35e6ea74-7b63-42b2-92c5-5a94a86a80b5%2Fnomac.png?1501085406786"
+               animation="property: color; dur: 1000; loop: true; to: #5F5"
+                animation__yoyo="property: position; dur: 6850; loop: true; to: 12 50 -11">
+     <a-animation attribute="rotation"
+               dur="10000"
+               fill="forwards"
+               to="0 360 0"
+               repeat="indefinite"></a-animation> -->
+
+<!--   </a-obj-model> -->
+
+      <a-obj-model obj-model="obj: #balloon1; mtl: #balloon2" rotation="0 0 0" scale="10 10 10" position="-1 -20 -15" src="https://cdn.glitch.com/35e6ea74-7b63-42b2-92c5-5a94a86a80b5%2Fnomac.png?1501085406786"
+               animation="property: color; dur: 1000; loop: true; to: #5F5"
+                animation__yoyo="property: position; dur: 19000; delay: 2000; loop: true; to: 0 50 -15">
+     <a-animation attribute="rotation"
+               dur="5000"
+               fill="forwards"
+               to="0 360 0"
+               repeat="indefinite"></a-animation>
+
+  </a-obj-model>
+
+  <a-obj-model obj-model="obj: #balloon1; mtl: #balloon2" rotation="0 0 0" scale="10 10 10" position="6 -20 -13" src="https://cdn.glitch.com/35e6ea74-7b63-42b2-92c5-5a94a86a80b5%2Fnomac.png?1501085406786"
+               animation="property: color; dur: 1000; loop: true; to: #5F5"
+                animation__yoyo="property: position; dur: 18500; delay: 1000; loop: true; to: 5 50 -13">
+     <a-animation attribute="rotation"
+               dur="1000"
+               fill="forwards"
+               to="0 360 0"
+               repeat="indefinite"></a-animation>
+
+  </a-obj-model>
+
+      <a-obj-model obj-model="obj: #balloon1; mtl: #balloon2" rotation="0 0 0" scale="10 10 10" position="13 -20 -11" src="https://cdn.glitch.com/35e6ea74-7b63-42b2-92c5-5a94a86a80b5%2Fnomac.png?1501085406786"
+               animation="property: color; dur: 1000; loop: true; to: #5F5"
+                animation__yoyo="property: position; dur: 6850; delay: 500; loop: true; to: 12 50 -11">
+     <a-animation attribute="rotation"
+               dur="10000"
+               fill="forwards"
+               to="0 360 0"
+               repeat="indefinite"></a-animation>
+
+  </a-obj-model>
+  </a-entity>
+
+  <a-entity position = "30 0 15" rotation = "0 80 0">
+      <a-obj-model obj-model="obj: #balloon1; mtl: #balloon2" rotation="0 0 0" scale="10 10 10" position="0 -20 -15" src="https://cdn.glitch.com/35e6ea74-7b63-42b2-92c5-5a94a86a80b5%2Fnomac.png?1501085406786"
+               animation="property: color; dur: 1000; loop: true; to: #5F5"
+                animation__yoyo="property: position; dur: 18000; loop: true; to: 0 50 -15">
+     <a-animation attribute="rotation"
+               dur="2000"
+               fill="forwards"
+               to="0 360 0"
+               repeat="indefinite"></a-animation>
+
+  </a-obj-model>
+
+  <a-obj-model obj-model="obj: #balloon1; mtl: #balloon2" rotation="0 0 0" scale="10 10 10" position="5 -20 -13" src="https://cdn.glitch.com/35e6ea74-7b63-42b2-92c5-5a94a86a80b5%2Fnomac.png?1501085406786"
+               animation="property: color; dur: 1000; loop: true; to: #5F5"
+                animation__yoyo="property: position; dur: 18500; loop: true; to: 5 50 -13">
+     <a-animation attribute="rotation"
+               dur="2500"
+               fill="forwards"
+               to="0 360 0"
+               repeat="indefinite"></a-animation>
+
+  </a-obj-model>
+
+      <a-obj-model obj-model="obj: #balloon1; mtl: #balloon2" rotation="0 0 0" scale="10 10 10" position="12 -20 -11" src="https://cdn.glitch.com/35e6ea74-7b63-42b2-92c5-5a94a86a80b5%2Fnomac.png?1501085406786"
+               animation="property: color; dur: 1000; loop: true; to: #5F5"
+                animation__yoyo="property: position; dur: 5850; loop: true; to: 12 50 -11">
+     <a-animation attribute="rotation"
+               dur="10000"
+               fill="forwards"
+               to="0 360 0"
+               repeat="indefinite"></a-animation>
+
+  </a-obj-model>
+
+       <a-obj-model obj-model="obj: #balloon1; mtl: #balloon2" rotation="0 0 0" scale="10 10 10" position="-1 -20 -15" src="https://cdn.glitch.com/35e6ea74-7b63-42b2-92c5-5a94a86a80b5%2Fnomac.png?1501085406786"
+               animation="property: color; dur: 1000; loop: true; to: #5F5"
+                animation__yoyo="property: position; dur: 19000; delay: 2000; loop: true; to: 0 50 -15">
+     <a-animation attribute="rotation"
+               dur="4100"
+               fill="forwards"
+               to="0 360 0"
+               repeat="indefinite"></a-animation>
+
+  </a-obj-model>
+
+  <a-obj-model obj-model="obj: #balloon1; mtl: #balloon2" rotation="0 0 0" scale="10 10 10" position="6 -20 -13" src="https://cdn.glitch.com/35e6ea74-7b63-42b2-92c5-5a94a86a80b5%2Fnomac.png?1501085406786"
+               animation="property: color; dur: 1000; loop: true; to: #5F5"
+                animation__yoyo="property: position; dur: 17500; delay: 1000; loop: true; to: 5 50 -13">
+     <a-animation attribute="rotation"
+               dur="3100"
+               fill="forwards"
+               to="0 360 0"
+               repeat="indefinite"></a-animation>
+
+  </a-obj-model>
+
+      <a-obj-model obj-model="obj: #balloon1; mtl: #balloon2" rotation="0 0 0" scale="10 10 10" position="13 -20 -11" src="https://cdn.glitch.com/35e6ea74-7b63-42b2-92c5-5a94a86a80b5%2Fnomac.png?1501085406786"
+               animation="property: color; dur: 1000; loop: true; to: #5F5"
+                animation__yoyo="property: position; dur: 6050; delay: 500; loop: true; to: 12 50 -11">
+     <a-animation attribute="rotation"
+               dur="10000"
+               fill="forwards"
+               to="0 360 0"
+               repeat="indefinite"></a-animation>
+
+  </a-obj-model>
+    </a-entity>
+
+  <a-entity position="0 0 15" rotation="0 180 0">
+      <a-obj-model obj-model="obj: #balloon1; mtl: #balloon2" rotation="0 0 0" scale="10 10 10" position="0 -20 -15" src="https://cdn.glitch.com/35e6ea74-7b63-42b2-92c5-5a94a86a80b5%2Fnomac.png?1501085406786"
+               animation="property: color; dur: 1000; loop: true; to: #5F5"
+                animation__yoyo="property: position; dur: 18000; loop: true; to: 0 50 -15">
+     <a-animation attribute="rotation"
+               dur="2100"
+               fill="forwards"
+               to="0 360 0"
+               repeat="indefinite"></a-animation>
+
+  </a-obj-model>
+
+  <a-obj-model obj-model="obj: #balloon1; mtl: #balloon2" rotation="0 0 0" scale="10 10 10" position="5 -20 -13" src="https://cdn.glitch.com/35e6ea74-7b63-42b2-92c5-5a94a86a80b5%2Fnomac.png?1501085406786"
+               animation="property: color; dur: 1000; loop: true; to: #5F5"
+                animation__yoyo="property: position; dur: 16500; loop: true; to: 5 50 -13">
+     <a-animation attribute="rotation"
+               dur="3000"
+               fill="forwards"
+               to="0 360 0"
+               repeat="indefinite"></a-animation>
+
+  </a-obj-model>
+
+      <a-obj-model obj-model="obj: #balloon1; mtl: #balloon2" rotation="0 0 0" scale="10 10 10" position="12 -20 -11" src="https://cdn.glitch.com/35e6ea74-7b63-42b2-92c5-5a94a86a80b5%2Fnomac.png?1501085406786"
+               animation="property: color; dur: 1000; loop: true; to: #5F5"
+                animation__yoyo="property: position; dur: 17580; loop: true; to: 12 50 -11">
+     <a-animation attribute="rotation"
+               dur="3100"
+               fill="forwards"
+               to="0 360 0"
+               repeat="indefinite"></a-animation>
+
+  </a-obj-model>
+
+  <a-obj-model obj-model="obj: #balloon1; mtl: #balloon2" rotation="0 0 0" scale="10 10 10" position="6 -20 -13" src="https://cdn.glitch.com/35e6ea74-7b63-42b2-92c5-5a94a86a80b5%2Fnomac.png?1501085406786"
+               animation="property: color; dur: 1000; loop: true; to: #5F5"
+                animation__yoyo="property: position; dur: 12900; delay: 1000; loop: true; to: 5 50 -13">
+     <a-animation attribute="rotation"
+               dur="10000"
+               fill="forwards"
+               to="0 360 0"
+               repeat="indefinite"></a-animation>
+
+  </a-obj-model>
+
+      <a-obj-model obj-model="obj: #balloon1; mtl: #balloon2" rotation="0 0 0" scale="10 10 10" position="13 -20 -11" src="https://cdn.glitch.com/35e6ea74-7b63-42b2-92c5-5a94a86a80b5%2Fnomac.png?1501085406786"
+               animation="property: color; dur: 1000; loop: true; to: #5F5"
+                animation__yoyo="property: position; dur: 12050; delay: 500; loop: true; to: 12 50 -11">
+     <a-animation attribute="rotation"
+               dur="10000"
+               fill="forwards"
+               to="0 360 0"
+               repeat="indefinite"></a-animation>
+
+  </a-obj-model>
+  </a-entity>
+
+    <!--Snow-->
+<!--     <a-entity particle-system="preset: snow; color: #24CAFF; particleCount: 5000"></a-entity> -->
+
+    <!--Camera-->
+    <a-camera universal-controls position="-10 1.1 30" rotation="0 -20 0"></a-camera>
+
+    <a-torus-knot arc="90" p="10" q="7" radius="12" radius-tubular="1" rotation="90 0 0" position="0 -8 0"></a-torus-knot>
+
+    <!--Water and ground-->
+<!--     <a-plane material="shader:flat" position="0 0 -400" rotation="-90 0 0" src="https://cdn.glitch.com/2df0928a-cb92-4f4f-bd46-393d060fdde0%2Fwaternormals.jpg?1513367309446" opacity="0.7" ocean="density: 100; width: 1000; depth: 780; speed: 1gib speedVariance= 300"></a-plane>
+    <a-plane width="1000" height="1000" position="0 -1 0" rotation="-90 0 0" src="https://cdn.glitch.com/2df0928a-cb92-4f4f-bd46-393d060fdde0%2FTexturesCom_SoilBeach0131_1_seamless_S.jpg?1513561245988" repeat="100 100"></a-plane>
+   -->
+    <!--Lighting-->
+    <a-light type="ambient" intensity=".8">
+    </a-light>
+    <a-light type="point" position="0 0 -70" rotation="90 0 0" target="#directionaltarget">
+    <a-entity id="directionaltarget" position="40 0 -70"></a-entity>
+    <a-entity id="directionaltarget1" position="-40 0 -70"></a-entity>
+    <a-entity id="directionaltarget2" position="20 0 -70"></a-entity>
+    <a-entity id="directionaltarget3" position="-20 0 -70"></a-entity>
+<!--     <a-sphere color="#ffff80" radius="50" position="0 250 0"></a-sphere> -->
+    </a-light>
+
+    <!--candles-->
+    <a-cylinder radius= "12" position="0 -2 0"></a-cylinder>
+    <a-entity>
+    <a-cylinder color="crimson" height="4" radius=".2" position="0 0 -4" ></a-cylinder>
+    <a-entity class="fireparticles" position="0 2 -4" rotation="0 0 0" particle-system="maxAge:1.5; velocityValue: 0 0.01 0; accelerationValue: 0 0.3 0; size: 0.15; blending: 5; accelerationSpread: 0.1 0.1 0.1; velocitySpread: 0.1 0.1 0.1; color: #FF0000,#FF8800"></a-entity>
+<!--     <a-cylinder color="crimson" height="4" radius=".2" position="0 0 4" ></a-cylinder>
+    <a-entity class="fireparticles" position="0 2 4" rotation="0 0 0" particle-system="maxAge:1.5; velocityValue: 0 0.01 0; accelerationValue: 0 0.3 0; size: 0.15; blending: 5; accelerationSpread: 0.1 0.1 0.1; velocitySpread: 0.1 0.1 0.1; color: #FF0000,#FF8800"></a-entity> -->
+    <a-cylinder color="crimson" height="4" radius=".2" position="4 0 -4" ></a-cylinder>
+    <a-entity class="fireparticles" position="4 2 -4" rotation="0 0 0" particle-system="maxAge:1.5; velocityValue: 0 0.01 0; accelerationValue: 0 0.3 0; size: 0.15; blending: 5; accelerationSpread: 0.1 0.1 0.1; velocitySpread: 0.1 0.1 0.1; color: #FF0000,#FF8800"></a-entity>
+<!--     <a-cylinder color="crimson" height="4" radius=".2" position="-5 0 5" ></a-cylinder>
+    <a-entity class="fireparticles" position="-5 2 5" rotation="0 0 0" particle-system="maxAge:1.5; velocityValue: 0 0.01 0; accelerationValue: 0 0.3 0; size: 0.15; blending: 5; accelerationSpread: 0.1 0.1 0.1; velocitySpread: 0.1 0.1 0.1; color: #FF0000,#FF8800"></a-entity> -->
+    <a-cylinder color="crimson" height="4" radius=".2" position="3 0 -2" ></a-cylinder>
+    <a-entity class="fireparticles" position="3 2 -2" rotation="0 0 0" particle-system="maxAge:1.5; velocityValue: 0 0.01 0; accelerationValue: 0 0.3 0; size: 0.15; blending: 5; accelerationSpread: 0.1 0.1 0.1; velocitySpread: 0.1 0.1 0.1; color: #FF0000,#FF8800"></a-entity>
+    </a-entity>
+
+    <a-entity rotation="0 -100 0">
+    <a-cylinder color="crimson" height="4" radius=".2" position="0 0 -4" ></a-cylinder>
+    <a-entity class="fireparticles" position="0 2 -4" rotation="0 0 0" particle-system="maxAge:1.5; velocityValue: 0 0.01 0; accelerationValue: 0 0.3 0; size: 0.15; blending: 5; accelerationSpread: 0.1 0.1 0.1; velocitySpread: 0.1 0.1 0.1; color: #FF0000,#FF8800"></a-entity>
+    <a-cylinder color="crimson" height="4" radius=".2" position="0 0 4" ></a-cylinder>
+    <a-entity class="fireparticles" position="0 2 4" rotation="0 0 0" particle-system="maxAge:1.5; velocityValue: 0 0.01 0; accelerationValue: 0 0.3 0; size: 0.15; blending: 5; accelerationSpread: 0.1 0.1 0.1; velocitySpread: 0.1 0.1 0.1; color: #FF0000,#FF8800"></a-entity>
+    <a-cylinder color="crimson" height="4" radius=".2" position="4 0 -4" ></a-cylinder>
+    <a-entity class="fireparticles" position="4 2 -4" rotation="0 0 0" particle-system="maxAge:1.5; velocityValue: 0 0.01 0; accelerationValue: 0 0.3 0; size: 0.15; blending: 5; accelerationSpread: 0.1 0.1 0.1; velocitySpread: 0.1 0.1 0.1; color: #FF0000,#FF8800"></a-entity>
+    <a-cylinder color="crimson" height="4" radius=".2" position="-5 0 5" ></a-cylinder>
+    <a-entity class="fireparticles" position="-5 2 5" rotation="0 0 0" particle-system="maxAge:1.5; velocityValue: 0 0.01 0; accelerationValue: 0 0.3 0; size: 0.15; blending: 5; accelerationSpread: 0.1 0.1 0.1; velocitySpread: 0.1 0.1 0.1; color: #FF0000,#FF8800"></a-entity>
+    <a-cylinder color="crimson" height="4" radius=".2" position="3 0 -2" ></a-cylinder>
+    <a-entity class="fireparticles" position="3 2 -2" rotation="0 0 0" particle-system="maxAge:1.5; velocityValue: 0 0.01 0; accelerationValue: 0 0.3 0; size: 0.15; blending: 5; accelerationSpread: 0.1 0.1 0.1; velocitySpread: 0.1 0.1 0.1; color: #FF0000,#FF8800"></a-entity>
+    </a-entity>
+
+    <!--toppings-->
+    <a-cylinder color="crimson" height=".2" radius=".5" position="4 -1.5 -2" ></a-cylinder>
+    <a-cylinder color="crimson" height=".2" radius=".5" position="-3 -1.5 -4" ></a-cylinder>
+        <a-cylinder color="crimson" height=".2" radius=".5" position="1 -1.5 0" ></a-cylinder>
+        <a-cylinder color="crimson" height=".2" radius=".5" position="5 -1.5 -5" ></a-cylinder>
+        <a-cylinder color="crimson" height=".2" radius=".5" position="4 -1.5 0" ></a-cylinder>
+        <a-cylinder color="crimson" height=".2" radius=".5" position="0 -1.5 5" ></a-cylinder>
+        <a-cylinder color="crimson" height=".2" radius=".5" position="-6 -1.5 6" ></a-cylinder>
+        <a-cylinder color="crimson" height=".2" radius=".5" position="4 -1.5 6" ></a-cylinder>
+        <a-cylinder color="crimson" height=".2" radius=".5" position="0 -1.5 10" ></a-cylinder>
+        <a-cylinder color="crimson" height=".2" radius=".5" position="-6 -1.5 7" ></a-cylinder>
+
+    <a-box src="https://cdn.glitch.com/27b72f3c-7030-442d-9bcc-d0b49ad6f074%2FTexturesCom_WoodPlanksOld0151_18_seamless_S%20(1).jpg?1537039737104" depth="80" height="100" width="5" position="0 -15 0" rotation="0 0 -90"></a-box>
+
+  <a-entity id="sky" geometry="primitive: sphere; radius: 5000"
+                material="shader: gradient; topColor: 51 153 255; bottomColor: 255 255 153"
+                scale="-1 1 1"></a-entity>
+
+  <!--text-->
+ <a-entity text="value: Wishing you a chill birthday, John!; color:#FFFFFF; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/gloriahallelujah/GloriaHallelujah.json;" position="15 7 -15" rotation="10 -25 0" scale="135 145" ></a-entity>
+    <a-entity text="value: Love, Mom; color:#FFFFFF; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/gloriahallelujah/GloriaHallelujah.json;" position="55 2 -15" rotation="10 -25 0" scale="135 145" ></a-entity>
+
+    <div id="splash">
+      <h1>HAPPY BIRTHDAY!</h1>
+      <p>DIRECTIONS</p>
+      <p>Be patient and the world will become visible.</p>
+      <p>On mobile: Press screen and hold to walk. Move phone to look around.</p>
+      <p>On desktop: Use arrow keys to walk. Use mouse to look around.</p>
+      <p id="vr">PRESS HERE TO EXPLORE!</p>
+      <p>Created with Vrthday.</p>
+    </div>
+
+  <script type="text/javascript">
+
+  // ==========================================
+  // Splash screen code kudos to Studio Zero
+  // http://studiozero.co
+
+
+  var splash = document.querySelector('#splash');
+  var vrButton = document.querySelector('#vr');
+
+  var enter = function () {
+    splash.parentNode.removeChild(splash);
+  }
+
+  vrButton.addEventListener('click', enter);
+
+  // ==========================================
+
+
+  </script>
+
+
+</body>
+</html>

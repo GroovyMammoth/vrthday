@@ -111,7 +111,7 @@
         <div class="card-body">
           <h5 class="card-title">Birthday Cake</h5>
           <p class="card-text">Enjoy the most humongous birthday cake ever made!</p>
-          <button onclick="document.getElementById('pd').style.display='block'" class="btn btn-success">
+          <button onclick="document.getElementById('ck').style.display='block'" class="btn btn-success">
             Add to Cart
           </button>
         </div>
@@ -228,6 +228,37 @@
     </div>
   </div>
 
+  <div id="ck" class="w3-modal w3-animate-zoom">
+    <div class="w3-modal-content" style="background-color:black;">
+      <header class="w3-header">
+        <p align="right">
+          <button class="btn btn-danger ui-btn-right" onclick="document.getElementById('ck').style.display='none'">X</button>
+        </p>
+      </header>
+      <div class="w3-container">
+        <div class="text-center">
+          <form>
+            <p><input type="text" id="to_ck" placeholder="To"/></p>
+            <p><input type="text" id="from_ck" placeholder="From"/></p>
+            <p><input type="email" name="replyto" id="email_ck" placeholder="Recipient's Email"/></p>
+          </form>
+          <button
+            class="snipcart-add-item btn btn-success"
+            onclick="editCake(document.getElementById('to_ck').value,document.getElementById('from_ck').value,document.getElementById('email_ck').value);document.getElementById('ck').style.display='none';"
+            data-item-id="2"
+            data-item-name="Cake"
+            data-item-price="5.00"
+            data-item-weight="20"
+            data-item-url="https://www.vrthday.com/birthday"
+            data-item-description="Cake birthday card"
+            style="margin-bottom:10px;">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div>
     <form action="https://formspree.io/groovymammoth@gmail.com" method="POST" id="cart_form">
       <input type="hidden" name="replyto_1" id=email_1 value=""/>
@@ -258,6 +289,21 @@
         var StringHTML = "";
         for (i in TemplateHTML1){
           StringHTML = StringHTML.concat(TemplateHTML1[i], "\n");
+        }
+        PostFile(StringHTML);
+      }
+    }
+    function editCake(to,from,email){
+      if (to==="" || from==="" || email==="") {
+        alert("'To', 'From', and 'Recipient's Email' fields are required for this card!");
+        isValid = false;
+      }
+      else {
+        TemplateHTML3[340] = '<a-entity text="value: Wishing you a chill birthday, '.concat(to,'!; color:#FFFFFF; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/gloriahallelujah/GloriaHallelujah.json;" position="15 7 -15" rotation="10 -25 0" scale="135 145" ></a-entity>');
+        TemplateHTML3[341] = '    <a-entity text="value: Love, '.concat(from,'; color:#FFFFFF; shader: msdf; font:https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/gloriahallelujah/GloriaHallelujah.json;" position="55 2 -15" rotation="10 -25 0" scale="135 145" ></a-entity>');
+        var StringHTML = "";
+        for (i in TemplateHTML3){
+          StringHTML = StringHTML.concat(TemplateHTML3[i], "\n");
         }
         PostFile(StringHTML);
       }
