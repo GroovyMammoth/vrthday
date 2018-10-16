@@ -7,6 +7,7 @@ function GetSha(){
   return sha;
 }
 
+
 function PostFile(file){
   var name = GetSha().concat(".html");
   var fileb64 = btoa(file);
